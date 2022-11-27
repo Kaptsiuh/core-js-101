@@ -66,9 +66,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, John Doe!' => 'John Doe'
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
-  // return value.replace(/[Hello, ]/gi, '');
+function extractNameFromTemplate(value) {
+  // throw new Error('Not implemented');
+  return value.substring(7, value.length - 1);
 }
 
 /**
@@ -97,8 +97,9 @@ function getFirstChar(value) {
  *   'cat'              => 'cat'
  *   '\tHello, World! ' => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  // throw new Error('Not implemented');
+  return value.trim();
 }
 
 /**
@@ -112,8 +113,13 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-function repeatString(/* value, count */) {
-  throw new Error('Not implemented');
+function repeatString(value, count) {
+  // throw new Error('Not implemented');
+  let result = value;
+  for (let i = 1; i < count; i += 1) {
+    result += value;
+  }
+  return result;
 }
 
 /**
@@ -128,8 +134,9 @@ function repeatString(/* value, count */) {
  *   'I like legends', 'end' => 'I like legs',
  *   'ABABAB','BA' => 'ABAB'
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  // throw new Error('Not implemented');
+  return str.replace(value, '');
 }
 
 /**
@@ -143,8 +150,9 @@ function removeFirstOccurrences(/* str, value */) {
  *   '<span>' => 'span'
  *   '<a>' => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  // throw new Error('Not implemented');
+  return str.replace(/[<>]/gi, '');
 }
 
 /**
@@ -157,8 +165,9 @@ function unbracketTag(/* str */) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
-function convertToUpperCase(/* str */) {
-  throw new Error('Not implemented');
+function convertToUpperCase(str) {
+  // throw new Error('Not implemented');
+  return str.toUpperCase();
 }
 
 /**
@@ -176,8 +185,10 @@ function convertToUpperCase(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  // throw new Error('Not implemented');
+  return str.split(';');
+  // return `['${str.replace(/;/gi, "', '")}']`;
 }
 
 /**
@@ -203,8 +214,21 @@ function extractEmails(/* str */) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  // throw new Error('Not implemented');
+  let result = '';
+  const line = '─'.repeat(width - 2);
+  const space = ' '.repeat(width - 2);
+  for (let i = 0; i < height; i += 1) {
+    if (i === 0) {
+      result += `┌${line}┐\n`;
+    } else if (i === height - 1) {
+      result += `└${line}┘\n`;
+    } else {
+      result += `│${space}│\n`;
+    }
+  }
+  return result;
 }
 
 /**
@@ -223,8 +247,26 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  // throw new Error('Not implemented');
+  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  const alphabetUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const arr = [];
+  for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < alphabet.length; j += 1) {
+      if (str[i] === alphabet[j]) {
+        const number = (j + 13) % 26;
+        arr.push(alphabet[number]);
+      } else if (str[i] === alphabetUpper[j]) {
+        const number = (j + 13) % 26;
+        arr.push(alphabetUpper[number]);
+      }
+    }
+    if (arr.length !== i + 1) {
+      arr.push(str[i]);
+    }
+  }
+  return arr.join('');
 }
 
 /**
@@ -242,7 +284,27 @@ function encodeToRot13(/* str */) {
  */
 function isString(/* value */) {
   throw new Error('Not implemented');
+  // const x = value.toUpperCase();
+  // console.log(.toString());
+  // if (typeof x === 'object') {
+  //   x = x.toString();
+  // }
+  // let x = false;
+  // if (typeof value === 'string') {
+  //   x = true;
+  // } else if (value !== null || typeof value === 'object') {
+  //   if (typeof value[0] === 'string') {
+  //     x = true;
+  //   }
+  //   // console.log(typeof value[0] === 'string');
+  //   // x = true;
+  // } else {
+  //   x = false;
+  // }
+  // return x;
 }
+
+// console.log(isString(new String('test')));
 
 /**
  * Returns playid card id.
@@ -270,6 +332,65 @@ function isString(/* value */) {
  */
 function getCardId(/* value */) {
   throw new Error('Not implemented');
+  // const arr = [
+  //   'A♣',
+  //   '2♣',
+  //   '3♣',
+  //   '4♣',
+  //   '5♣',
+  //   '6♣',
+  //   '7♣',
+  //   '8♣',
+  //   '9♣',
+  //   '10♣',
+  //   'J♣',
+  //   'Q♣',
+  //   'K♣',
+  //   'A♦',
+  //   '2♦',
+  //   '3♦',
+  //   '4♦',
+  //   '5♦',
+  //   '6♦',
+  //   '7♦',
+  //   '8♦',
+  //   '9♦',
+  //   '10♦',
+  //   'J♦',
+  //   'Q♦',
+  //   'K♦',
+  //   'A♥',
+  //   '2♥',
+  //   '3♥',
+  //   '4♥',
+  //   '5♥',
+  //   '6♥',
+  //   '7♥',
+  //   '8♥',
+  //   '9♥',
+  //   '10♥',
+  //   'J♥',
+  //   'Q♥',
+  //   'K♥',
+  //   'A♠',
+  //   '2♠',
+  //   '3♠',
+  //   '4♠',
+  //   '5♠',
+  //   '6♠',
+  //   '7♠',
+  //   '8♠',
+  //   '9♠',
+  //   '10♠',
+  //   'J♠',
+  //   'Q♠',
+  //   'K♠',
+  // ];
+  // for (let i = 0; i < arr.length; i += 1) {
+  //   if (arr[i] === value) {
+  //     return i;
+  //   }
+  // }
 }
 
 module.exports = {
