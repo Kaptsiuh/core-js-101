@@ -418,8 +418,9 @@ function getFalsyValuesCount(/* arr */) {
  *    [ null, undefined, null ], null => 2
  *    [ true, 0, 1, 'true' ], true => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  // throw new Error('Not implemented');
+  return arr.filter((e) => e === item).length;
 }
 
 /**
@@ -433,8 +434,9 @@ function findAllOccurrences(/* arr, item */) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  // throw new Error('Not implemented');
+  return arr.join(',');
 }
 
 /**
@@ -487,6 +489,19 @@ function sortCitiesArray(/* arr */) {
  */
 function getIdentityMatrix(/* n */) {
   throw new Error('Not implemented');
+  // const arr = [];
+  // for (let i = 0; i < n; i += 1) {
+  //   arr.push([]);
+  // }
+  // for (let i = 0; i < n; i += 1) {
+  //   for (let j = 0; j < n; j += 1) {
+  //     if (i === j) {
+  //       arr[i].push(1);
+  //     }
+  //     arr[i].push(0);
+  //   }
+  // }
+  // return arr;
 }
 
 /**
@@ -519,6 +534,13 @@ function getIntervalArray(/* start, end */) {
  */
 function distinct(/* arr */) {
   throw new Error('Not implemented');
+  // const newArr = [];
+  // arr.map((e) => {
+  //   if (!newArr.hasOwnProperty(e)) {
+  //     newArr.push(e);
+  //   }
+  // });
+  // return newArr;
 }
 
 /**
