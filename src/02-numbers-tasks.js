@@ -253,7 +253,6 @@ function toNumber(value, def) {
   } else {
     res = def;
   }
-  // if (Namber(value) === 'number')
   return res;
 }
 

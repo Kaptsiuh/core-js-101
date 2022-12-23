@@ -19,27 +19,9 @@
  *    ['Array', 'Number', 'string'], 'Date'    => -1
  *    [0, 1, 2, 3, 4, 5], 5    => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
-  // let result = -1;
-  // arr.map((e, i) => {
-  //   if (e === value) {
-  //     result = i;
-  //     return i;
-  //   }
-  // });
-  // let result = arr.map((e, i) => {
-  //   if (e === value) {
-  //     return i;
-  //   }
-  // });
-  // const result = arr.filter(function(e) {
-  //   // return e === value;
-  //   if (e === value) {
-  //     return e;
-  //   }
-  // });
-  // return result;
+function findElement(arr, value) {
+  // throw new Error('Not implemented');
+  return arr.indexOf(value);
 }
 
 /**
@@ -53,21 +35,9 @@ function findElement(/* arr, value */) {
  *    2 => [ 1, 3 ]
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
-  // const arr = [];
-  // const result =
-  // let acc = 0;
-  // for (let i = 0; i < len; i += 1) {
-  //   if (i === 0) {
-  //     acc += 1;
-  //   } else {
-  //     acc += 2;
-  //   }
-  //   arr.push(acc);
-  // }
-  // return arr;
-  // [...new Array(len)].map(() =>)
+function generateOdds(len) {
+  // throw new Error('Not implemented');
+  return Array.from({ length: len }, (_, x) => x * 2 + 1);
 }
 
 /**
@@ -239,19 +209,9 @@ function getTail(arr, n) {
  *    +'20,21,22,23,24\n'
  *    +'30,31,32,33,34'
  */
-function toCsvText(/* arr */) {
-  throw new Error('Not implemented');
-  // return arr
-  //   .map((e, i) => {
-  //     if (e.length === 1) {
-  //       return `${e}\n`;
-  //     }
-  //     if (i !== e.length - 2) {
-  //       return `${e}\n`;
-  //     }
-  //     return `${e}`;
-  //   })
-  //   .join('');
+function toCsvText(arr) {
+  // throw new Error('Not implemented');
+  return arr.join('\n');
 }
 
 /**
@@ -284,8 +244,13 @@ function toArrayOfSquares(arr) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(/* arr */) {
-  throw new Error('Not implemented');
+function getMovingSum(arr) {
+  // throw new Error('Not implemented');
+  let count = 0;
+  return arr.map((e) => {
+    count += e;
+    return count;
+  });
 }
 
 /**
@@ -299,8 +264,9 @@ function getMovingSum(/* arr */) {
  * [ 'a', 'b', 'c' , null ]  => [ "b", null ]
  * [ "a" ] => []
  */
-function getSecondItems(/* arr */) {
-  throw new Error('Not implemented');
+function getSecondItems(arr) {
+  // throw new Error('Not implemented');
+  return arr.filter((e, i) => i % 2 !== 0);
 }
 
 /**
